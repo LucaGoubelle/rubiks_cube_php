@@ -1,6 +1,8 @@
 <?php
 
-class MegaminxRotateHelpers {
+require_once "MinxRotateHelpers.php";
+
+class MegaminxRotateHelpers extends MinxRotateHelpers {
     public static function genEmptyFace(){
         $face = [];
         $row1 = [
@@ -11,10 +13,6 @@ class MegaminxRotateHelpers {
         array_push($face, $row1);
         array_push($face, $row2);
         return $face;
-    }
-
-    public static function copyFace($face){
-        return json_decode(json_encode($face));
     }
 
     public static function rotate($face){
