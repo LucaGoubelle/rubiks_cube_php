@@ -1,6 +1,6 @@
 <?php
 
-class Megaminx {
+class Minx {
     public $up;
     public $front;
     public $left;

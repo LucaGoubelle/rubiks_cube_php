@@ -1,6 +1,6 @@
 <?php
 
-require_once "Megaminx.php";
+require_once "Minx.php";
 
 class MegaminxBuilder {
 
@@ -29,7 +29,7 @@ class MegaminxBuilder {
         $back = $this->buildFace("purple");
         $down = $this->buildFace("white");
 
-        return new Megaminx(
+        return new Minx(
             $up, $front, $left, $right, $downLeft, $downRight,
             $absLeft, $absRight, $backLeft, $backRight, $back, $down
         );
