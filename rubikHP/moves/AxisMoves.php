@@ -11,10 +11,10 @@ class AxisMoves extends Moves {
         $cube->up = $this->rh->rotate($cube->up);
         $cube->down = $this->rh->rotateAsync($cube->down);
 
-        $newFront = unserialize(serialize($cube->right));
-        $newRight = unserialize(serialize($cube->back));
-        $newLeft = unserialize(serialize($cube->front));
-        $newBack = unserialize(serialize($cube->left));
+        $newFront = $this->rh->copyFace($cube->right);
+        $newRight = $this->rh->copyFace($cube->back);
+        $newLeft = $this->rh->copyFace($cube->front);
+        $newBack = $this->rh->copyFace($cube->left);
 
         $cube->front = $this->rh->transfert($cube->front, $newFront);
         $cube->right = $this->rh->transfert($cube->right, $newRight);
