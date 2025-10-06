@@ -2,11 +2,11 @@
 
 class RotateHelpers {
 
-    public static function copyFace(array $face){
+    public function copyFace(array $face){
         return unserialize(serialize($face));
     }
 
-    public static function genEmptyFace(int $size): array {
+    public function genEmptyFace(int $size): array {
         $face = [];
         for($i=0;$i<$size;$i++) {
             $row = [];
@@ -17,7 +17,7 @@ class RotateHelpers {
         return $face;
     }
 
-    public static function rotate(array $face): array {
+    public function rotate(array $face): array {
         $size = count($face);
         $newFace = self::genEmptyFace($size);
         for($i=0;$i<$size;$i++){
@@ -30,19 +30,19 @@ class RotateHelpers {
         return $newFace;
     }
 
-    public static function rotateAsync(array $face): array {
+    public function rotateAsync(array $face): array {
         for($i=0;$i<3;$i++)
             $face = self::rotate($face);
         return $face;
     }
 
-    public static function rotateTwice(array $face): array {
+    public function rotateTwice(array $face): array {
         for($i=0;$i<2;$i++)
             $face = self::rotate($face);
         return $face;
     }
 
-    public static function transfert(array $face, array $newFace): array {
+    public function transfert(array $face, array $newFace): array {
         $size = count($face);
         for($i=0;$i<$size;$i++)
             for($j=0;$j<$size;$j++)

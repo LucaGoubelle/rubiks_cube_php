@@ -1,6 +1,6 @@
 <?php
 
-require_once "rubikHP/moves/Moves.php";
+require_once "rubikHP/moves/Mover.php";
 require_once "rubikHP/data/Cube.php";
 
 class CubeScrambler {

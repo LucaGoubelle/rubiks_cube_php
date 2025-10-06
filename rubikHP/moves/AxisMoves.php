@@ -1,38 +1,38 @@
 <?php
 
-require_once "rubikHP/moves/helpers/RotateHelpers.php";
+require_once "rubikHP/moves/moves.php";
 require_once "rubikHP/data/Cube.php";
 
-class AxisMoves {
+class AxisMoves extends Moves {
     // y
 
     public function moveY(Cube $cube): Cube {
         
-        $cube->up = RotateHelpers::rotate($cube->up);
-        $cube->down = RotateHelpers::rotateAsync($cube->down);
+        $cube->up = $this->rh->rotate($cube->up);
+        $cube->down = $this->rh->rotateAsync($cube->down);
 
         $newFront = unserialize(serialize($cube->right));
         $newRight = unserialize(serialize($cube->back));
         $newLeft = unserialize(serialize($cube->front));
         $newBack = unserialize(serialize($cube->left));
 
-        $cube->front = RotateHelpers::transfert($cube->front, $newFront);
-        $cube->right = RotateHelpers::transfert($cube->right, $newRight);
-        $cube->left = RotateHelpers::transfert($cube->left, $newLeft);
-        $cube->back = RotateHelpers::transfert($cube->back, $newBack);
+        $cube->front = $this->rh->transfert($cube->front, $newFront);
+        $cube->right = $this->rh->transfert($cube->right, $newRight);
+        $cube->left = $this->rh->transfert($cube->left, $newLeft);
+        $cube->back = $this->rh->transfert($cube->back, $newBack);
 
         return $cube;
     }
 
     public function moveYPrime(Cube $cube): Cube {
         for($i=0;$i<3;$i++)
-            $cube = self::moveY($cube);
+            $cube = $this->moveY($cube);
         return $cube;
     }
 
     public function moveY2(Cube $cube): Cube {
         for($i=0;$i<2;$i++)
-            $cube = self::moveY($cube);
+            $cube = $this->moveY($cube);
         return $cube;
     }
 
@@ -43,13 +43,13 @@ class AxisMoves {
 
     public function moveXPrime(Cube $cube): Cube {
         for($i=0;$i<3;$i++)
-            $cube = self::moveX($cube);
+            $cube = $this->moveX($cube);
         return $cube;
     }
 
     public function moveX2(Cube $cube): Cube {
         for($i=0;$i<2;$i++)
-            $cube = self::moveX($cube);
+            $cube = $this->moveX($cube);
         return $cube;
     }
 
@@ -60,13 +60,13 @@ class AxisMoves {
 
     public function moveZPrime(Cube $cube): Cube {
         for($i=0;$i<3;$i++)
-            $cube = self::moveZ($cube);
+            $cube = $this->moveZ($cube);
         return $cube;
     }
 
     public function moveZ2(Cube $cube): Cube {
         for($i=0;$i<2;$i++)
-            $cube = self::moveZ($cube);
+            $cube = $this->moveZ($cube);
         return $cube;
     }
 

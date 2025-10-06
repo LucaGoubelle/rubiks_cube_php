@@ -1,6 +1,6 @@
 <?php 
 
-require_once "rubikHP/moves/Moves.php";
+require_once "rubikHP/moves/STDMoves.php";
 require_once "rubikHP/moves/AxisMoves.php";
 
 class Mover {
@@ -8,7 +8,7 @@ class Mover {
     private $axisMoves;
 
     public function __construct(){
-        $this->moves = new Moves();
+        $this->moves = new STDMoves();
         $this->axisMoves = new AxisMoves();
     }
 
