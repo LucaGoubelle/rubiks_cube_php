@@ -3,7 +3,7 @@
 require_once "MinxRotateHelpers.php";
 
 class MegaminxRotateHelpers extends MinxRotateHelpers {
-    public static function genEmptyFace(){
+    public function genEmptyFace(){
         $face = [];
         $row1 = [
             "","","","","",
@@ -15,7 +15,7 @@ class MegaminxRotateHelpers extends MinxRotateHelpers {
         return $face;
     }
 
-    public static function rotate($face){
+    public function rotate($face){
         $newFace = self::genEmptyFace();
 
         $newFace[0][0] = $face[0][8];
@@ -34,7 +34,7 @@ class MegaminxRotateHelpers extends MinxRotateHelpers {
         return $newFace;
     }
 
-    public static function rotateAsync($face){
+    public function rotateAsync($face){
         $newFace = self::genEmptyFace();
 
         $newFace[0][0] = $face[0][2];
@@ -53,31 +53,31 @@ class MegaminxRotateHelpers extends MinxRotateHelpers {
         return $newFace;
     }
 
-    public static function rotateTwice($face){
+    public function rotateTwice($face){
         for($i=0;$i<2;$i++)
             $face = self::rotate($face);
         return $face;
     }
 
-    public static function rotateTwiceAsync($face){
+    public function rotateTwiceAsync($face){
         for($i=0;$i<2;$i++)
             $face = self::rotateAsync($face);
         return $face;
     }
 
-    public static function rotateThree($face){
+    public function rotateThree($face){
         for($i=0;$i<3;$i++)
             $face = self::rotate($face);
         return $face;
     }
 
-    public static function rotateThreeAsync($face){
+    public function rotateThreeAsync($face){
         for($i=0;$i<3;$i++)
             $face = self::rotateAsync($face);
         return $face;
     }
 
-    public static function transfert($face, $newFace){
+    public function transfert($face, $newFace){
         for($i=0;$i<sizeof($face[0]);$i++)
             $face[0][$i] = ($newFace[0][$i]) ? $newFace[0][$i] : $face[0][$i];
         $face[1][0] = ($newFace[1][0]!="") ? $newFace[1][0] : $face[1][0];

@@ -4,12 +4,12 @@ require_once "MinxRotateHelpers.php";
 
 class KilominxRotateHelpers extends MinxRotateHelpers {
     
-    public static function genEmptyFace(){
+    public function genEmptyFace(){
         $face = ["","","","",""];
         return $face;
     }
 
-    public static function rotate($face){
+    public function rotate($face){
         $newFace = self::genEmptyFace();
         
         $newFace[0] = $face[4];
@@ -21,7 +21,7 @@ class KilominxRotateHelpers extends MinxRotateHelpers {
         return $newFace;
     }
 
-    public static function rotateAsync($face){
+    public function rotateAsync($face){
         $newFace = self::genEmptyFace();
         
         $newFace[0] = $face[1];
@@ -33,7 +33,7 @@ class KilominxRotateHelpers extends MinxRotateHelpers {
         return $newFace;
     }
 
-    public static function transfert($face, $newFace){
+    public function transfert($face, $newFace){
         for($i=0;$i<sizeof($face);$i++)
             $face[$i] = ($newFace[$i]!="") ? $newFace[$i] : $face[$i];
         return $face;
