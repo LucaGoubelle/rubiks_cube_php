@@ -1,7 +1,7 @@
 <?php
 
 require_once "solverHelpers/CrownScanner.php";
-require_once "solverHelpers/CrownCaster.php";
+require_once "solverHelpers/casters/CrownCaster.php";
 
 class OLLScanner {
     private $scanner;
