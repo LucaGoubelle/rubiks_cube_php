@@ -4,6 +4,7 @@ require_once "rubikHP/data/Cube.php";
 require_once "rubikHP/data/CubeBuilder.php";
 require_once "rubikHP/data/CubeStrDumper.php";
 require_once "rubikHP/data/CubeLoader.php";
+require_once "rubikHP/data/CubeDumper.php";
 
 require_once "rubikHP/display/CubePrinter.php";
 require_once "rubikHP/moves/Mover.php";
