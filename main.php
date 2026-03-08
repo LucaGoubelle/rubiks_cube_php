@@ -3,12 +3,11 @@
 require_once "rubikHP/index.php";
 require_once "solverHelpers/index.php";
 
-$builder = new CubeBuilder();
 $printer = new CubePrinter();
 $mover = new Mover();
+$loader = new CubeLoader();
 
-$size = 3;
-$cube = $builder->build($size);
+$cube = $loader->load("res/saves/cube3x3.json");
 $printer->print($cube);
 
 echo "-------------------------------------\n";
