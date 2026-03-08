@@ -2,14 +2,17 @@
 
 require_once "rubikHP/moves/STDMoves.php";
 require_once "rubikHP/moves/AxisMoves.php";
+require_once "rubikHP/moves/WMoves.php";
 
 class Mover {
     private $moves;
     private $axisMoves;
+    private $wMoves;
 
     public function __construct(){
         $this->moves = new STDMoves();
         $this->axisMoves = new AxisMoves();
+        $this->wMoves = new WMoves();
     }
 
     public function simpleMove(Cube $cube, string $move): Cube {
@@ -37,6 +40,14 @@ class Mover {
             case "y": $cube = $this->axisMoves->moveY($cube); break;
             case "y'": $cube = $this->axisMoves->moveYPrime($cube); break;
             case "y2": $cube = $this->axisMoves->moveY2($cube); break;
+
+            case "Uw": $cube = $this->wMoves->moveUw($cube); break;
+            case "Uw'": $cube = $this->wMoves->moveUwPrime($cube); break;
+            case "Uw2": $cube = $this->wMoves->moveUw2($cube); break;
+
+            case "Dw": $cube = $this->wMoves->moveDw($cube); break;
+            case "Dw'": $cube = $this->wMoves->moveDwPrime($cube); break;
+            case "Dw2": $cube = $this->wMoves->moveDw2($cube); break;
 
             default: break;
         }
