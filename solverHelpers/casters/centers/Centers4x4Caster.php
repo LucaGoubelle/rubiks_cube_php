@@ -1,6 +1,6 @@
 <?php
 
-require_once "solverHelpers/casters/centers/CentersCaster";
+require_once "solverHelpers/casters/centers/CentersCaster.php";
 
 class Centers4x4Caster extends CentersCaster {
 
