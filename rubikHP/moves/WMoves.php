@@ -78,6 +78,78 @@ class WMoves extends Moves {
             $cube = $this->moveDw($cube, $layers);
         return $cube;
     }
+
+    public function moveLw(Cube $cube, int $layers=2){
+        $size = sizeof($cube->left);
+        $cube->left = $this->rh->rotate($cube->left);
+
+        $newUp = $this->rh->genEmptyFace($size);
+        $newFront = $this->rh->genEmptyFace($size);
+        $newDown = $this->rh->genEmptyFace($size);
+        $newBack = $this->rh->genEmptyFace($size);
+
+        for($j=0;$j<$layer;$j++)
+            for($i=0;$i<$size;$i++){
+                $newFront[$i][$j] = $cube->up[$i][$j];
+                $newDown[$i][$j] = $cube->front[$i][$j];
+                $newBack[$i][$j] = $cube->down[$i][$j];
+                $newUp[$i][$size-(1+$j)] = $cube->back[$i][$size-(1+$j)];
+            }
+
+        $cube->front = $this->rh->transfert($cube->front, $newFront);
+        $cube->up = $this->rh->transfert($cube->up, $this->rh->rotateTwice($newUp));
+        $cube->down = $this->rh->transfert($cube->down, $newDown);
+        $cube->back = $this->rh->transfert($cube->back, $this->rh->rotateTwice($newBack));
+        return $cube;
+    }
+
+    public function moveLwPrime(Cube $cube, int $layers=2){
+        for($i=0;$i<3;$i++)
+            $cube = $this->moveLw($cube, $layers);
+        return $cube;
+    }
+
+    public function moveLw2(Cube $cube, int $layers=2){
+        for($i=0;$i<2;$i++)
+            $cube = $this->moveLw($cube, $layers);
+        return $cube;
+    }
+    
+    public function moveRw(Cube $cube, int $layers=2){
+        $size = sizeof($cube->right);
+        $cube->right = $this->rh->rotate($cube->right);
+
+        $newFront = $this->rh->genEmptyFace($size);
+        $newUp = $this->rh->genEmptyFace($size);
+        $newBack = $this->rh->genEmptyFace($size);
+        $newDown = $this->rh->genEmptyFace($size);
+
+        for($j=0;$j<$layers;$j++)
+            for($i=0;$i<$size;$i++){
+                $newFront[$i][$size-(1+$j)] = $cube->down[$i][$size-(1+$j)];
+                $newUp[$i][$size-(1+$j)] = $cube->front[$i][$size-(1+$j)];
+                $newBack[$i][$size-(1+$j)] = $cube->up[$i][$size-(1+$j)];
+                $newDown[$i][$j] = $cube->back[$i][$j];
+            }
+        
+        $cube->front = $this->rh->transfert($cube->front, $newFront);
+        $cube->up = $this->rh->transfert($cube->up, $newUp);
+        $cube->back = $this->rh->transfert($cube->back, $this->rh->rotateTwice($newBack));
+        $cube->down = $this->rh->transfert($cube->down, $this->rh->rotateTwice($newDown));
+        return $cube;
+    }
+
+    public function moveRwPrime(Cube $cube, int $layers=2){
+        for($i=0;$i<3;$i++)
+            $cube = $this->moveRw($cube);
+        return $cube;
+    }
+
+    public function moveRw2(Cube $cube, int $layers=2){
+        for($i=0;$i<2;$i++)
+            $cube = $this->moveRw($cube);
+        return $cube;
+    }
     
 }
 
